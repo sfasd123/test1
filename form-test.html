@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单测试</title>
+</head>
+<body>
+    <div id="app">
+       <form>
+           <div>
+               <label>用户名:</label>
+               <input v-model="name" placeholder="请输入姓名">
+           </div>
+           <div>
+               <label>性别:</label>
+               <input type="radio" id="man" value="男" v-model="sex">
+               <span>男</span>
+               <input type="radio" id="woman" value="女" v-model="sex">
+               <span>女</span>
+           </div>
+           <div>
+               <label>所属学校:</label>
+               <select v-model="school">
+                   <option v-for="option in options" v-bind:value="option.value">
+                       {{option.text}}
+                   </option>
+               </select>
+           </div>
+           <div>
+               <label>爱好:</label>
+               <input type="checkbox" id="English" value="English" v-model="hobby">
+               <label for="English">英语</label>
+               <input type="checkbox" id="chinese" value="chinese" v-model="hobby">
+               <label for="chinese">语文</label>
+               <input type="checkbox" id="math" value="math" v-model="hobby">
+               <label for="math">数学</label>
+           </div>
+           <button v-on:click="submitForm">提交</button>
+       </form>
+    </div>
+</body>
+<!-- 引入vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data: {
+          name:'',
+          sex:'',
+          options:[
+            { text: '海滨学院', value: '海滨学院' },
+            { text: '石家庄学院', value: '石家庄学院'},
+            { text: '唐山学院', value: '唐山学院'}
+          ],
+           school:'',
+           hobby:[]
+
+        },
+        methods:{
+            submitForm(){
+               alert("姓名:" + this.name +  "性别:" + this.sex +"所属学校:" + this.school +"爱好:" + this.hobby );
+            }
+        }
+    })
+</script>
+</html>
